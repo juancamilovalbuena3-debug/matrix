@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Motrix</title>
+
+    <!-- Enlace al CSS externo -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+    <div class="login-box">
+        <h1>Motrix</h1>
+
+        <!-- mensaje de error -->
+        <div th:if="${param.error}" class="error">
+            Usuario o contraseña incorrectos
+        </div>
+
+        <!-- mensaje logout -->
+        <div th:if="${param.logout}" class="error logout">
+            Sesión cerrada correctamente
+        </div>
+
+        <!-- FORMULARIO LOGIN -->
+        <form th:action="@{/login}" method="post">
+            <label for="username">Usuario</label>
+            <input id="username" name="username" type="text" required>
+
+            <label for="password">Contraseña</label>
+            <input id="password" name="password" type="password" required>
+
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <p class="small">
+            ¿No tienes cuenta? 
+            <a th:href="@{/register}" class="register-link">Regístrate</a>
+        </p>
+    </div>
+</body>
+</html>
